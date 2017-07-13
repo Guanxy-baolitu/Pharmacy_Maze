@@ -6,8 +6,8 @@ public class C_WdnArrow : MonoBehaviour {
 
 	//用rigidbody去掉重力来控制运动
 
-	public int Damage=100;
-	public float LifeTime=2f;
+	public int Damage=10;
+	public float LifeTime=4.0f;
 
 	void OnEnable(){
 		//CancelInvoke();
@@ -16,12 +16,19 @@ public class C_WdnArrow : MonoBehaviour {
 
 	}
 
-	void OnTriggerEnter(Collider col){
-		if(col.transform.tag == "Player"){
-		Managers.Player.ChangeHealth(-Damage);
+    void Start() {
+        CancelInvoke();
+        Invoke("Die",LifeTime);
+    }
+
+    void OnTriggerEnter(Collider col){
+		if(col.gameObject.layer == LayerMask.NameToLayer("Ignore Raycast"))
+        {
+            Debug.Log("HIT");
+		    Managers.Player.ChangeHealth(-Damage);
 		}
 	}
 	void Die(){
-			gameObject.SetActive(false);
+		gameObject.SetActive(false);
 	}
 }
