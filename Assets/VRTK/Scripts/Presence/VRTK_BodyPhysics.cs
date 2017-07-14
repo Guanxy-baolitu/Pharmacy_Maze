@@ -978,7 +978,7 @@ namespace VRTK
             generatedContainer.transform.localRotation = Quaternion.identity;
             generatedContainer.transform.localScale = Vector3.one;
 
-            generatedContainer.layer = LayerMask.NameToLayer("Ignore Raycast");
+            generatedContainer.layer = LayerMask.NameToLayer("PLAYER_BODY");
             VRTK_PlayerObject.SetPlayerObject(generatedContainer, VRTK_PlayerObject.ObjectTypes.Collider);
 
             return generatedContainer;
@@ -1029,7 +1029,7 @@ namespace VRTK
                 else
                 {
                     bodyColliderContainer = CreateColliderContainer(BODY_COLLIDER_CONTAINER_NAME, playArea);
-                    bodyColliderContainer.gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
+                    bodyColliderContainer.gameObject.layer = LayerMask.NameToLayer("PLAYER_BODY");
                 }
 
                 bodyCollider = GenerateCapsuleCollider(bodyColliderContainer, bodyRadius);
@@ -1049,7 +1049,7 @@ namespace VRTK
                 else
                 {
                     footColliderContainer = CreateColliderContainer(FOOT_COLLIDER_CONTAINER_NAME, bodyColliderContainer.transform);
-                    footColliderContainer.gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
+                    footColliderContainer.gameObject.layer = LayerMask.NameToLayer("PLAYER_BODY");
                 }
 
                 footCollider = GenerateCapsuleCollider(footColliderContainer, 0f);
@@ -1073,7 +1073,7 @@ namespace VRTK
 
             if (playArea.gameObject.layer == 0)
             {
-                playArea.gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
+                playArea.gameObject.layer = LayerMask.NameToLayer("PLAYER_BODY");
             }
             TogglePhysics(enableBodyCollisions);
         }

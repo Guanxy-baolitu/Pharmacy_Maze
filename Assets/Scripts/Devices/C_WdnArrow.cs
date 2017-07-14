@@ -12,8 +12,6 @@ public class C_WdnArrow : MonoBehaviour {
 	void OnEnable(){
 		//CancelInvoke();
 		//Invoke("Die",LifeTime);先不死？
-
-
 	}
 
     void Start() {
@@ -22,9 +20,8 @@ public class C_WdnArrow : MonoBehaviour {
     }
 
     void OnTriggerEnter(Collider col){
-		if(col.gameObject.layer == LayerMask.NameToLayer("Ignore Raycast"))
+		if(col.gameObject.layer == LayerMask.NameToLayer("PLAYER_BODY"))
         {
-            Debug.Log("HIT");
 		    Managers.Player.ChangeHealth(-Damage);
 		}
 	}

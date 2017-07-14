@@ -20,7 +20,7 @@ public class C_Turret : MonoBehaviour {
         if(!_usedUp)
         {//如果没发过子弹，就发射
             Debug.Log("fire");
-            Managers.Player.ShowCaption("C_Turret");
+            Managers.Data.ShowCaption("C_Turret");
             _usedUp = true;
             StartCoroutine(Fire());
         }
@@ -37,7 +37,7 @@ public class C_Turret : MonoBehaviour {
             _wdnArrow.GetComponent<Rigidbody>().AddForce(new Vector3(500, 0, 0));
             yield return new WaitForSeconds(fireDelay);
         }
-        Managers.Player.ShowCaption("C_Turret_FireComplete");
+        Managers.Data.ShowCaption("C_Turret_FireComplete");
     }
 
 	public void Deactivate() {
